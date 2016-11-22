@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F24CDD5-C0BD-4C67-913C-AA81E3077CFD}"
 	ProjectSection(SolutionItems) = preProject
 		azure.deployment = azure.deployment
+		global.json = global.json
 	EndProjectSection
 EndProject
 Global
