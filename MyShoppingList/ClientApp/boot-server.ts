@@ -1,5 +1,5 @@
 import 'angular2-universal-polyfills';
-import 'zone.js';
+import 'zone.js'; 
 import { enableProdMode } from '@angular/core';
 import { platformNodeDynamic } from 'angular2-universal';
 import { AppModule } from './app/app.module';
