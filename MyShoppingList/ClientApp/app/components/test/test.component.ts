@@ -8,6 +8,6 @@ export class TestComponent {
     public someText = "tatata";
 
     public doSomething() {
-        this.someText = "buuuuuuu";
+        this.someText = "buuuuuuu" + this.someText;
     }
 }
