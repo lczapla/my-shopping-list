@@ -6,7 +6,7 @@ import { AppComponent } from './app.component'
 import { routing }        from './app.routing';
 
 import { AuthGuard } from './_guards/index';
-import { AuthenticationService, WeatherForecastService } from './_services/index';
+import { AuthenticationService, WeatherForecastService, StorageService } from './_services/index';
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/index';
 import { NavMenuComponent } from './navmenu/navmenu.component';
@@ -29,7 +29,8 @@ import { FetchDataComponent } from './fetchdata/fetchdata.component';
     providers: [
         AuthGuard,
         AuthenticationService,
-        WeatherForecastService
+        WeatherForecastService,
+        StorageService
     ]
 })
 export class AppModule {

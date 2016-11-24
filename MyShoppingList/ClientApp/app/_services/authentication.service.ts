@@ -3,17 +3,16 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
+import { StorageService } from './storage.service'
 
 @Injectable()
 export class AuthenticationService {
     public token: string;
 
-    constructor(private http: Http, private router: Router) {
+    constructor(private http: Http, private router: Router, private storage: StorageService) {
         // set token if saved in local storage
-        if (!(typeof localStorage === 'undefined')) {
-            var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        var currentUser = JSON.parse(this.storage.getItem('currentUser'));
             this.token = currentUser && currentUser.token;
-        }
     }
 
     login(username: string, password: string): Observable<boolean> {
@@ -29,9 +28,7 @@ export class AuthenticationService {
                     this.token = token;
 
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    if (!(typeof localStorage === 'undefined')) {
-                        localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
-                    }
+                    this.storage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
                     console.debug("logged in");
 
                     // return true to indicate successful login
@@ -51,9 +48,7 @@ export class AuthenticationService {
         }
         // clear token remove user from local storage to log user out
         this.token = null;
-        if (!(typeof localStorage === 'undefined')) {
-            localStorage.removeItem('currentUser');
-        }
+        this.storage.removeItem('currentUser');
 
         if (redirect) {
             this.router.navigate(['/login']);
