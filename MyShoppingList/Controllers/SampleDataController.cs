@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyShoppingList.Controllers
 {
@@ -14,6 +15,7 @@ namespace MyShoppingList.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching", "Testing"
         };
 
+        [Authorize]
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
